@@ -1,0 +1,5 @@
+# install required packages for fedora
+sudo dnf install alacritty jetbrains-mono-fonts unzip
+
+# [optional] remove some alternative packages after installed new ones
+sudo dnf remove foot
