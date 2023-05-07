@@ -3,3 +3,11 @@ sudo dnf install alacritty jetbrains-mono-fonts unzip
 
 # [optional] remove some alternative packages after installed new ones
 sudo dnf remove foot
+
+# move files to config file
+sudo mv gtk-3.0 ~/.config/
+sudo mv sway ~/.config/
+sudo mv Thunar ~/.config/
+sudo mv waybar ~/.config/
+
+# after you moved the folders press Mod+Shift+C

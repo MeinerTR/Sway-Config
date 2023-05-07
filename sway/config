@@ -27,17 +27,24 @@ font pango:Jetbrains Mono 8
 # Remove window title & border
 default_border none
 default_floating_border none
+font pango:monospace 0
+titlebar_padding 0
+titlebar_border_thickness 0
 
+# Move keys
 set $left h
 set $down j
 set $up k
 set $right l
 
+# Terminal
 set $term alacritty
 
+# Rofi
 set $rofi_cmd rofi -terminal '$term'
 set $menu $rofi_cmd -show drun
 
+# Background
 output * bg /usr/share/backgrounds/default.png fill
 
 ### Key bindings
@@ -151,6 +158,16 @@ output * bg /usr/share/backgrounds/default.png fill
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad shows
 #
+# Swaybar:
+#
+bar {
+    swaybar_command waybar
+    position bottom
+    mode hide
+    hidden_state hide
+    workspace_buttons yes
+}
+#
 # Resizing containers:
 #
 mode "resize" {
@@ -175,4 +192,4 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-include '$(/usr/libexec/sway/layered-include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+include '$(/usr/libexec/sway/layered-include "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf" "/etc/sway/config.d/*.conf")'
