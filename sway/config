@@ -1,5 +1,8 @@
 # Read `man 5 sway` for a complete reference.
 
+# I3 initialize
+exec --no-startup-id dex-autostart --autostart --environment i3
+
 # XWayland support
 xwayland enabled
 
@@ -27,8 +30,7 @@ font pango:Jetbrains Mono 8
 # Remove window title & border
 default_border none
 default_floating_border none
-font pango:monospace 0
-titlebar_padding 0
+titlebar_padding 1
 titlebar_border_thickness 0
 
 # Move keys
