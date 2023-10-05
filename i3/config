@@ -1,0 +1,133 @@
+# -- -- -- STARTUP -- -- -- #
+
+# i3 initialize
+exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id lxpolkit
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Color temperature & gamma
+exec_always --no-startup-id xgamma -gamma 0.8
+exec_always --no-startup-id redshift -x
+exec_always --no-startup-id redshift -O 2500
+
+# Wallpaper
+output * bg /usr/share/backgrounds/default.png fill
+
+# -- -- -- VARIABLES -- -- -- #
+
+# Mod Keybinding
+set $mod Mod4
+
+# Workspace names
+set $ws0 1 www
+set $ws1 2 dev
+set $ws2 3 tasks
+set $ws3 4 term
+set $ws4 5 files
+set $ws5 6 music
+set $ws6 7 game
+set $ws7 8 etc
+set $ws8 9 etc
+set $ws9 10 log
+
+# Font and size of it
+font pango:Fira Code 8
+
+# Remove window title & border
+default_border none
+default_floating_border none
+# for_window [all] border none
+
+# Window opacity
+set $opacity 0.8
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
+# -- -- -- KEYBINDING -- -- -- #
+
+# Window keybindings
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+space floating toggle
+floating_modifier $mod
+
+# Sound keybindings
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+ unmute && $refresh_i3status
+bindsym $mod+bracketright exec --no-startup-id amixer -q sset Master 5%+ unmute && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%- unmute && $refresh_i3status
+bindsym $mod+bracketleft exec --no-startup-id amixer -q sset Master 5%- unmute && $refresh_i3status
+
+# Launch keybindings
+bindsym $mod+Return exec "alacritty"
+bindsym $mod+d exec --no-startup-id "rofi -show drun"
+
+# Focus keybindings
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+space focus mode_toggle
+
+# i3 reload & restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'want to exit i3?' -B 'yes' 'i3-msg exit'"
+
+# -- -- -- WORKSPACE -- -- -- #
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws0
+bindsym $mod+2 workspace number $ws1
+bindsym $mod+3 workspace number $ws2
+bindsym $mod+4 workspace number $ws3
+bindsym $mod+5 workspace number $ws4
+bindsym $mod+6 workspace number $ws5
+bindsym $mod+7 workspace number $ws6
+bindsym $mod+8 workspace number $ws7
+bindsym $mod+9 workspace number $ws8
+bindsym $mod+0 workspace number $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws0
+bindsym $mod+Shift+2 move container to workspace number $ws1
+bindsym $mod+Shift+3 move container to workspace number $ws2
+bindsym $mod+Shift+4 move container to workspace number $ws3
+bindsym $mod+Shift+5 move container to workspace number $ws4
+bindsym $mod+Shift+6 move container to workspace number $ws5
+bindsym $mod+Shift+7 move container to workspace number $ws6
+bindsym $mod+Shift+8 move container to workspace number $ws7
+bindsym $mod+Shift+9 move container to workspace number $ws8
+bindsym $mod+Shift+0 move container to workspace number $ws9
+
+# -- -- -- THEME -- -- -- #
+
+# class                 border  bground text    indicator child_border
+client.focused          #0C0C0C #0C0C0C #FFFFFF #000000   #000000
+client.focused_inactive #0C0C0C #0C0C0C #FFFFFF #000000   #000000
+client.unfocused        #000000 #000000 #FFFFFF #000000   #000000
+client.urgent           #000000 #000000 #FFFFFF #000000   #000000
+client.placeholder      #000000 #000000 #FFFFFF #000000   #000000
+
+client.background       #000000
+
+bar {
+    mode hide
+    position top
+
+    colors {
+        background #000000
+        statusline #FFFFFF
+        separator  #000000
+
+        focused_workspace  #0C0C0C #0C0C0C #FFFFFF
+        active_workspace   #0D0D0D #0D0D0D #FFFFFF
+        inactive_workspace #000000 #000000 #888888
+        urgent_workspace   #000000 #000000 #FFFFFF
+        binding_mode       #0C0C0C #0C0C0C #FFFFFF
+    }
+    status_command i3status
+}
