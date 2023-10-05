@@ -1,13 +1,13 @@
 # install required packages for fedora
-sudo dnf install alacritty jetbrains-mono-fonts unzip i3
+sudo dnf install redshift alacritty fira-code-fonts xgamma lxpolkit alsa-utils
 
 # [optional] remove some alternative packages after installed new ones
 sudo dnf remove foot
 
 # move files to config file
 sudo mv gtk-3.0 ~/.config/
-sudo mv sway ~/.config/
+sudo mv i3 ~/.config/
 sudo mv Thunar ~/.config/
-sudo mv waybar ~/.config/
+sudo mv i3status ~/.config/
 
 # after you moved the folders press Mod+Shift+C
