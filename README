@@ -1,5 +1,5 @@
 # install required packages for fedora
-sudo dnf install redshift alacritty fira-code-fonts xgamma lxpolkit alsa-utils
+sudo dnf install i3 redshift alacritty fira-code-fonts xgamma lxpolkit alsa-utils
 
 # [optional] remove some alternative packages after installed new ones
 sudo dnf remove foot
