@@ -39,7 +39,7 @@ default_floating_border none
 # for_window [all] border none
 
 # Window opacity
-set $opacity 0.8
+set $opacity 0.9
 for_window [class=".*"] opacity $opacity
 for_window [app_id=".*"] opacity $opacity
 
